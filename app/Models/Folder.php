@@ -28,4 +28,9 @@ class Folder extends Model
     {
         return $this->belongsTo(Area::class, 'id_area');
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'id_carpeta');
+    }
 }

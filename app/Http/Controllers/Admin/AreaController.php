@@ -55,8 +55,10 @@ class AreaController extends Controller
      */
     public function show(string $id)
     {
-        // $directions = Direction::where('id_empresa', $id)->with('company:id,nombre')->get();
-        //
+        $areas = Area::where('id_direccion', $id)->with('direction:id,nombre')->get();
+        return Inertia::render('areas/show', [
+            'areas' => $areas
+        ]);
     }
 
     /**

@@ -13,20 +13,16 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface Props {
-    // companies: Company[];
 }
-export default function Index(
-    // { companies }: Props
+export default function Create(
+    { parent = null, id_area = null }: any
 ) {
-
-
-
-    // console.log(companies);
+    console.log(parent,id_area);
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className='container mx-auto py-10 px-10 border-4'>
                 <div className="grid w-full max-w-sm items-center gap-3">
-                    <ExplorerForm/>
+                    <ExplorerForm parent={parent} id_area={id_area} />
                 </div>
             </div>
 

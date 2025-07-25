@@ -28,11 +28,6 @@ const mainNavItems: NavItem[] = [
         href: '/areas',
         icon: Users,
     },
-    {
-        title: 'Carpetas',
-        href: '/folders',
-        icon: Users,
-    },
 ];
 
 const footerNavItems: NavItem[] = [

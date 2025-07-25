@@ -53,8 +53,8 @@ export const columns: ColumnDef<Area>[] = [
     id: "acciones",
     size: 50,
     cell: ({ row }) => {
-      const direction = row.original
-
+      const area = row.original
+      console.log("AREA", area.id);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -68,13 +68,13 @@ export const columns: ColumnDef<Area>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               {/* <Link href={route('explorer.index', direction.id)} className="flex w-full items-center"> */}
-              <Link href={route('folders.index', direction.id)} className="flex w-full items-center">
+              <Link href={route('folders.show',area.id )} className="flex w-full items-center">
                 <EyeIcon />
                 Ver
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link href={route('areas.edit', direction.id)} className="flex w-full items-center">
+              <Link href={route('areas.edit', area.id)} className="flex w-full items-center">
                 <EditIcon />
                 Editar
               </Link>
@@ -87,7 +87,7 @@ export const columns: ColumnDef<Area>[] = [
 
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(direction.nombre)}
+              onClick={() => navigator.clipboard.writeText(area.nombre)}
             >
               <Clipboard />
               Copiar nombre
