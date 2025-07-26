@@ -47,7 +47,7 @@ class DirectionController extends Controller
 
         Direction::create($validated);
 
-        return redirect()->back()->with('success', 'Direccion creada.');
+        return redirect()->route('directions.index')->with('success', 'Direccion creada correctamente.');
     }
 
     /**
@@ -89,8 +89,7 @@ class DirectionController extends Controller
 
         $direction->update($validated);
 
-        return redirect()->route('directions.index')
-            ->with('success', 'Dirección actualizada correctamente.');
+        return redirect()->route('directions.index')->with('success', 'Dirección actualizada correctamente.');
     }
 
     /**

@@ -65,8 +65,7 @@ class DocumentController extends Controller
         }
 
 
-        return redirect()->route('folders.show', $id_area)
-            ->with('success', 'Archivo guardad  correctamente.');
+        return redirect()->route('folders.show', $id_area)->with('success', 'Archivo creado correctamente.');
     }
 
     /**

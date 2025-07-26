@@ -37,8 +37,7 @@ class CompanyController extends Controller
         ]);
 
         Company::create($validated);
-        return redirect()->route('companies.index')
-            ->with('success', 'Empresa actualizada correctamente.');
+        return redirect()->route('companies.index')->with('success', 'Empresa creada correctamente.');
         
     }
 
@@ -74,8 +73,7 @@ class CompanyController extends Controller
 
         $company->update($validated);
 
-        return redirect()->route('companies.index')
-            ->with('success', 'Empresa actualizada correctamente.');
+        return redirect()->route('companies.index')->with('success', 'Empresa actualizada correctamente.');
     }
 
     /**

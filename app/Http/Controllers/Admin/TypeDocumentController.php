@@ -69,7 +69,7 @@ class TypeDocumentController extends Controller
 
         $typeDocument->update($validated);
 
-        return redirect()->route('types-documents.index')->with('success', 'Tipo creado correctamente.');
+        return redirect()->route('types-documents.index')->with('success', 'Tipo actualizado correctamente.');
     }
 
     /**

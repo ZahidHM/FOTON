@@ -47,7 +47,7 @@ class AreaController extends Controller
 
         Area::create($validated);
 
-        return redirect()->back()->with('success', 'Direccion creada.');
+        return redirect()->route('areas.index')->with('success', 'Area creada correctamente.');
     }
 
     /**
@@ -88,8 +88,7 @@ class AreaController extends Controller
 
         $area->update($validated);
 
-        return redirect()->route('areas.index')
-            ->with('success', 'Area actualizada correctamente.');
+        return redirect()->route('areas.index')->with('success', 'Area actualizada correctamente.');
     }
 
     /**
