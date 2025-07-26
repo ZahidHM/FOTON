@@ -7,6 +7,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/react';
 import { Building, ChevronRightIcon, TrendingUp } from 'lucide-react';
+import { toast } from 'sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -16,6 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
+    toast.info("Bienvenido.");
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from '@/types';
 import { DataTable } from './table/data-table';
 import { columns, Company } from './table/columns';
+import { toast } from 'sonner';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Empresas',
@@ -12,7 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface Props {
-  companies: Company[];
+    companies: Company[];
 }
 export default function Index({ companies }: Props) {
 

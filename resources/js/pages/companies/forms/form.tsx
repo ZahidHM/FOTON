@@ -41,7 +41,7 @@ export function CompanieForm() {
             <FormItem>
               <FormLabel>Nombre de la empresa</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Empresa" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

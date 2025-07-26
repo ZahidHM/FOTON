@@ -32,7 +32,6 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $validated = $request->validate([
             'nombre' => ['required', 'string', 'max:255'],
         ]);
