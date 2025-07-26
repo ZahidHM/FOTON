@@ -93,11 +93,10 @@ class FolderController extends Controller
      */
     public function show(string $id)
     {
-        // $folders = Folder::with('hijas')->with('documents')->whereNull('id_padre')->get();
         $folders = Folder::with(['hijas.documents', 'hijas.hijas.documents', 'documents'])
             ->whereNull('id_padre')
+            ->where('id_area', $id)
             ->get();
-
         return Inertia::render('folders/index', [
             'folders' => $folders,
             'table_id_area' => $id

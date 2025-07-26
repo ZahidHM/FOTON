@@ -15,14 +15,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 interface Props {
 }
 export default function Create(
-    { id_carpeta = null, types_documents }: any
+    { id_carpeta , types_documents , id_area }: any
 ) {
-    console.log("CARPETA", id_carpeta);
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className='container mx-auto py-10 px-10 border-4'>
                 <div className="grid w-full max-w-sm items-center gap-3">
-                    <ExplorerForm id_carpeta={id_carpeta} types_documents={types_documents} />
+                    <ExplorerForm id_carpeta={id_carpeta} types_documents={types_documents} id_area={id_area} />
                 </div>
             </div>
 

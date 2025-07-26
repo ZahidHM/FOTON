@@ -32,7 +32,6 @@ export function ExplorerForm(
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("id", currentIdArea);
     console.log("pariente", currentParent);
-    // Aquí podrías subir archivos con FormData o enviar a backend
     router.post('/folders', {
       ...values, parent: currentParent,
       id_area: currentIdArea,

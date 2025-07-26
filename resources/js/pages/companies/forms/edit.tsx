@@ -12,31 +12,26 @@ const formSchema = z.object({
   nombre: z.string().nonempty({
     message: "El nombre es requerido",
   }),
-  id_empresa: z.string().nonempty({
-    message: "La empresa es requerido",
-  }),
 
 })
 interface Props {
-  companies: Company[];
+  company: Company;
 }
-export function DirectionForm({ companies }: Props) {
+export function EditForm({ company }: Props) {
+  console.log(company);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nombre: "",
-      id_empresa: "",
+      nombre: company.nombre,
     },
   })
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
 
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values)
-    router.post('/directions', values)
+    router.put(`/companies/${company.id}`,values)
 
 
   }
@@ -48,39 +43,15 @@ export function DirectionForm({ companies }: Props) {
           name="nombre"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nombre de la direccion</FormLabel>
+              <FormLabel>Nombre de la empresa</FormLabel>
               <FormControl>
-                <Input placeholder="Direccion de desarrollo" {...field} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="id_empresa"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Empresa</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona una empresa" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {companies.map((company) =>
-                    <SelectItem value={String(company.id)} key={company.id}>{company.nombre}</SelectItem>
-
-                  )}
-                </SelectContent>
-              </Select>
-        
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button type="submit">Guardar</Button>
       </form>
     </Form>

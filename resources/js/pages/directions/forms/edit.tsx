@@ -54,7 +54,7 @@ export function EditForm({ companies, direction }: Props) {
             <FormItem>
               <FormLabel>Nombre de la direccion</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Direccion de desarrollo" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

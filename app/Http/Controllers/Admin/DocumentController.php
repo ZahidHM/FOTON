@@ -24,12 +24,13 @@ class DocumentController extends Controller
     public function create(Request $request)
     {
         $id = $request->input('id');
+        $id_area = $request->input('id_area');
 
         $types_documents = TypeDocument::all();
         return Inertia::render('documents/create', [
             'id_carpeta' => $id,
             'types_documents' => $types_documents,
-
+            'id_area' => $id_area
         ]);
     }
 
@@ -38,7 +39,7 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación, por ejemplo:
+        $id_area = $request->input('id_area');
         $validated = $request->validate([
             'id_tipo_documento' => 'required|string',
             'nombre' => 'required|string',
@@ -63,7 +64,9 @@ class DocumentController extends Controller
             $archivosGuardados[] = $document;
         }
 
-        return back()->with('success', 'Archivos guardados correctamente.');
+
+        return redirect()->route('folders.show', $id_area)
+            ->with('success', 'Archivo guardad  correctamente.');
     }
 
     /**

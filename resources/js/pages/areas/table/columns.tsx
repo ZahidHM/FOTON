@@ -29,7 +29,7 @@ export const columns: ColumnDef<Area>[] = [
   },
 
   {
-    id: "nombre",
+    id: "area",
     accessorKey: "nombre",
     header: "Area",
   },

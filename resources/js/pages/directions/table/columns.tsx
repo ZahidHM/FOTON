@@ -29,7 +29,7 @@ export const columns: ColumnDef<Direction>[] = [
   },
 
   {
-    id: "nombre",
+    id: "direccion",
     accessorKey: "nombre",
     header: "Direccion",
   },

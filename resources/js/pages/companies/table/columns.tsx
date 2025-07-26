@@ -49,14 +49,17 @@ export const columns: ColumnDef<Company>[] = [
             {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
             <DropdownMenuSeparator />
             <DropdownMenuItem >
-              <Link className="flex w-full items-center" href={route('directions.show',company.id)}>
+              <Link className="flex w-full items-center" href={route('directions.show', company.id)}>
                 <EyeIcon />
                 Ver
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <EditIcon />
-              Editar
+              <Link className="flex w-full items-center" href={route('companies.edit', company.id)}>
+
+                <EditIcon />
+                Editar
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Trash />

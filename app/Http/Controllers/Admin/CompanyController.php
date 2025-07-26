@@ -38,9 +38,9 @@ class CompanyController extends Controller
         ]);
 
         Company::create($validated);
-
-        return redirect()->back()->with('success', 'Empresa creada.');
-        //
+        return redirect()->route('companies.index')
+            ->with('success', 'Empresa actualizada correctamente.');
+        
     }
 
     /**
@@ -56,7 +56,10 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return Inertia::render('companies/edit', [
+            'company' => $company
+        ]);
     }
 
     /**
@@ -64,7 +67,16 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+        ]);
+
+        $company = Company::findOrFail($id);
+
+        $company->update($validated);
+
+        return redirect()->route('companies.index')
+            ->with('success', 'Empresa actualizada correctamente.');
     }
 
     /**

@@ -2,29 +2,30 @@ import React from 'react';
 
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from '@/types';
-import {  DirectionForm } from './forms/form';
 import { Company } from '../companies/table/columns';
+import { EditForm } from './forms/edit';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Direcciones',
         href: '/directions',
     },
     {
-        title: 'Crear Direccion',
-        href: '/directions/create',
+        title: 'Editar Direccion',
+        href: '/companies/edit',
     },
 ];
 
-interface Props{
-    companies : Company[];
+interface Props {
+    company: Company;
 }
-export default function Create({companies}:Props) {
-    console.log(companies);
+export default function Edit(
+    { company }: Props
+) {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <div className="p-10">
-                <DirectionForm companies={companies}/>
+                <EditForm company={company}  />
             </div>
         </AppLayout>
     );

@@ -26,6 +26,7 @@ const formSchema = z.object({
 
 interface Props {
   id_carpeta: string;
+  id_area:number;
   types_documents: TypeDocument[];
 }
 type TypeDocument = {
@@ -33,7 +34,7 @@ type TypeDocument = {
   nombre: string
 }
 export function ExplorerForm(
-  { id_carpeta, types_documents }: Props
+  { id_carpeta, types_documents ,id_area }: Props
 ) {
   const [current_id_carpeta] = useState(id_carpeta);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,7 +50,7 @@ export function ExplorerForm(
   function onSubmit(values: z.infer<typeof formSchema>) {
     router.post('/documents', {
       ...values,
-      id_carpeta: current_id_carpeta,
+      id_carpeta: current_id_carpeta , id_area,
     });
   }
   return (
@@ -77,7 +78,7 @@ export function ExplorerForm(
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecciona una empresa" />
+                    <SelectValue placeholder="Selecciona un tipo de archivo" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>

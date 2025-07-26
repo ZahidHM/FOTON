@@ -60,7 +60,7 @@ export default function Index(
           </Link>
         )}
         {folders.map((folder) => (
-          <FolderTree key={folder.id} folder={folder} />
+          <FolderTree key={folder.id} folder={folder} id_area={folders[0].id_area} />
         ))}
       </div>
     </AppLayout>
@@ -68,7 +68,7 @@ export default function Index(
   );
 }
 
-function FolderTree({ folder, level = 0 }: { folder: FolderType; level?: number }) {
+function FolderTree({ folder, level = 0, id_area }: { folder: FolderType; level?: number, id_area: number }) {
 
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => {
@@ -104,7 +104,7 @@ function FolderTree({ folder, level = 0 }: { folder: FolderType; level?: number 
           <PlusCircle className="ml-1 text-sm text-blue-500 " />
         </Link>
         <Link href={`/documents/create`}
-          data={{ id: folder.id }}
+          data={{ id: folder.id, id_area: id_area }}
         >
           <FilePlus className="ml-1 text-sm text-cyan-500 " />
         </Link>
@@ -114,7 +114,7 @@ function FolderTree({ folder, level = 0 }: { folder: FolderType; level?: number 
       {isOpen && folder.hijas && folder.hijas.length > 0 && (
         <div>
           {folder.hijas.map((child) => (
-            <FolderTree key={child.id} folder={child} level={level + 1} />
+            <FolderTree key={child.id} folder={child} level={level + 1} id_area={id_area} />
           ))}
         </div>
       )}
