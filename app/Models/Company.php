@@ -19,6 +19,6 @@ class Company extends Model
 
     public function directions(): HasMany
     {
-        return $this->hasMany(Direction::class);
+        return $this->hasMany(Direction::class, 'id', 'id');
     }
 }

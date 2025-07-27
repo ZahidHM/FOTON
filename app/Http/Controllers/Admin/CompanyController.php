@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Direction;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -38,7 +39,6 @@ class CompanyController extends Controller
 
         Company::create($validated);
         return redirect()->route('companies.index')->with('success', 'Empresa creada correctamente.');
-        
     }
 
     /**
@@ -77,10 +77,18 @@ class CompanyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     *  Remove the specified resource from storage.       
      */
     public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+
+        if ($company->directions()->exists()) {
+            return redirect()->route('companies.index')
+                ->with('error', 'No puedes eliminar la empresa porque tiene direcciones asociadas.');
+        }
+        $company->delete();
+        return redirect()->route('companies.index')->with('success', 'Empresa eliminada correctamente.');
     }
 }
