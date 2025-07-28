@@ -21,7 +21,6 @@ interface Props {
   directions: Direction[];
 }
 export function AreaForm({ directions }: Props) {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,11 +29,8 @@ export function AreaForm({ directions }: Props) {
     },
   })
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
 
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values)
     router.post('/areas', values)
 
@@ -50,7 +46,7 @@ export function AreaForm({ directions }: Props) {
             <FormItem>
               <FormLabel>Nombre del area</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Area" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -124,6 +124,13 @@ class FolderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $folder = Folder::findOrFail($id);
+
+        if ($folder->documents()->exists()) {
+            return redirect('/folders/' . $folder->id_area)->with('error', 'No puedes eliminar la carpeta porque tiene archivos asociados.');
+        }
+
+        $folder->delete();
+        return redirect('/folders/' . $folder->id_area)->with('success', 'Carpeta eliminada correctamente.');
     }
 }

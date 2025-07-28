@@ -96,6 +96,14 @@ class AreaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $area = Area::findOrFail($id);
+
+        if ($area->folder()->exists()) {
+            return redirect()->route('areas.index')
+                ->with('error', 'No puedes eliminar el area porque tiene carpetas asociadas.');
+        }
+
+        $area->delete();
+        return redirect()->route('areas.index')->with('success', 'Area eliminada correctamente.');
     }
 }

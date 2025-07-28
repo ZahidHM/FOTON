@@ -18,7 +18,6 @@ interface Props {
   typeDocument: typeDocuments;
 }
 export function EditForm({ typeDocument }: Props) {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -26,7 +25,6 @@ export function EditForm({ typeDocument }: Props) {
     },
   })
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
 
     console.log(values);

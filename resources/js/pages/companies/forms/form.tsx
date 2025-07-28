@@ -13,7 +13,6 @@ const formSchema = z.object({
 })
 
 export function CompanieForm() {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -21,11 +20,8 @@ export function CompanieForm() {
     },
   })
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
 
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values)
     router.post('/companies', values)
 

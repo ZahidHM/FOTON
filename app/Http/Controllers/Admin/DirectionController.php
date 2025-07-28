@@ -97,6 +97,14 @@ class DirectionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $direction = Direction::findOrFail($id);
+
+        if ($direction->area()->exists()) {
+            return redirect()->route('directions.index')
+                ->with('error', 'No puedes eliminar la direccion porque tiene areas asociadas.');
+        }
+
+        $direction->delete();
+        return redirect()->route('directions.index')->with('success', 'Direccion eliminada correctamente.');
     }
 }

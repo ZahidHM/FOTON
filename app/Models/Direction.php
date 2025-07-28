@@ -26,6 +26,6 @@ class Direction extends Model
 
     public function area(): HasMany
     {
-        return $this->hasMany(Area::class);
+        return $this->hasMany(Area::class , 'id_direccion');
     }
 }

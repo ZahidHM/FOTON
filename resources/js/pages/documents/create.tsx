@@ -19,7 +19,7 @@ export default function Create(
 ) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className='container mx-auto py-10 px-10 border-4'>
+            <div className='container mx-auto py-10 px-10'>
                 <div className="grid w-full max-w-sm items-center gap-3">
                     <ExplorerForm id_carpeta={id_carpeta} types_documents={types_documents} id_area={id_area} />
                 </div>

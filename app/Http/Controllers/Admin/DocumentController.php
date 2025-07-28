@@ -45,10 +45,9 @@ class DocumentController extends Controller
             'nombre' => 'required|string',
             'id_carpeta' => 'required|integer',
             'otro' => 'required|array',
-            'otro.*' => 'file|mimes:pdf,jpg,png,docx', // ajusta tipos permitidos
+            'otro.*' => 'file|mimes:pdf,jpg,png,docx', 
         ]);
 
-        // Guardar cada archivo y registrar en BD (o donde necesites)
         $archivosGuardados = [];
 
         foreach ($request->file('otro') as $archivo) {
@@ -97,6 +96,11 @@ class DocumentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $document = Document::with('folder')->findOrFail($id);
+
+        $document->delete();
+
+        return redirect('/folders/' . $document->folder->id_area)
+            ->with('success', 'Documento eliminado correctamente.');
     }
 }

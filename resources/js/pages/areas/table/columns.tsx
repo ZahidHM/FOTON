@@ -1,3 +1,4 @@
+import { DeleteDialog } from "@/components/custom/DeleteDialog"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Link } from "@inertiajs/react"
@@ -68,7 +69,7 @@ export const columns: ColumnDef<Area>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               {/* <Link href={route('explorer.index', direction.id)} className="flex w-full items-center"> */}
-              <Link href={route('folders.show',area.id )} className="flex w-full items-center">
+              <Link href={route('folders.show', area.id)} className="flex w-full items-center">
                 <EyeIcon />
                 Ver
               </Link>
@@ -79,13 +80,13 @@ export const columns: ColumnDef<Area>[] = [
                 Editar
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href="" className="flex w-full items-center">
-                <Trash />
-                Eliminar
-              </Link>
-
-            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <DeleteDialog
+                resourceId={area.id}
+                routeName="areas.destroy"
+                description="Esta acción no se puede deshacer. Se eliminará permanentemente el area."
+              />
+            </DropdownMenuItem> 
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(area.nombre)}
             >

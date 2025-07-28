@@ -6,8 +6,8 @@ import { DataTable } from './table/data-table';
 import { columns, Area } from './table/columns';
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Empresas',
-        href: '/companies',
+        title: 'Areas',
+        href: '/areas',
     },
 ];
 

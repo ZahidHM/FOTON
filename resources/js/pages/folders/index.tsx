@@ -3,7 +3,9 @@ import { Link, usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from '@/types';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, ChevronRight, FilePlus, Folder, Plus, PlusCircle } from 'lucide-react';
+import { ChevronDown, ChevronRight, File, FilePlus, Folder, Plus, PlusCircle, Trash } from 'lucide-react';
+import { DeleteDialog } from '@/components/custom/DeleteDialog';
+import { DeleteDialogIcon } from '@/components/custom/DeleteDialogIcon';
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: 'Carpetas',
@@ -109,6 +111,13 @@ function FolderTree({ folder, level = 0, id_area }: { folder: FolderType; level?
           <FilePlus className="ml-1 text-sm text-cyan-500 " />
         </Link>
 
+        <DeleteDialogIcon
+          resourceId={folder.id}
+          routeName="folders.destroy"
+          description="Esta acción no se puede deshacer. Se eliminará permanentemente la direccion."
+        />
+
+
       </div>
 
       {isOpen && folder.hijas && folder.hijas.length > 0 && (
@@ -120,10 +129,10 @@ function FolderTree({ folder, level = 0, id_area }: { folder: FolderType; level?
       )}
 
       {isOpen && folder.documents && folder.documents.length > 0 && (
-        <div className="ml-4">
+        <div className="ml-5">
           {folder.documents.map((doc) => (
-            <div key={doc.id} className="flex items-center">
-              <span className="w-4 h-4 mr-1">📄</span>
+            <div key={doc.id} className="flex items-center ">
+              <File className='w-4 h-4 text-sky-800'/>
               <a
                 href={`/storage/${doc.archivo}`}
                 className="text-blue-600 underline"
@@ -131,6 +140,11 @@ function FolderTree({ folder, level = 0, id_area }: { folder: FolderType; level?
               >
                 {doc.nombre}
               </a>
+              <DeleteDialogIcon
+                resourceId={doc.id}
+                routeName="documents.destroy"
+                description="Esta acción no se puede deshacer. Se eliminará permanentemente la direccion."
+              />
             </div>
           ))}
         </div>

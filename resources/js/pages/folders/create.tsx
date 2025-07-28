@@ -20,7 +20,7 @@ export default function Create(
     console.log(parent,id_area);
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <div className='container mx-auto py-10 px-10 border-4'>
+            <div className='container mx-auto py-10 px-10'>
                 <div className="grid w-full max-w-sm items-center gap-3">
                     <ExplorerForm parent={parent} id_area={id_area} />
                 </div>

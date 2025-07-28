@@ -1,3 +1,4 @@
+import { DeleteDialog } from "@/components/custom/DeleteDialog"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Link } from "@inertiajs/react"
@@ -78,12 +79,12 @@ export const columns: ColumnDef<Direction>[] = [
                 Editar
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href="" className="flex w-full items-center">
-                <Trash />
-                Eliminar
-              </Link>
-
+            <DropdownMenuItem asChild>
+              <DeleteDialog
+                resourceId={direction.id}
+                routeName="directions.destroy"
+                description="Esta acción no se puede deshacer. Se eliminará permanentemente la direccion."
+              />
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(direction.nombre)}

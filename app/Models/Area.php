@@ -24,6 +24,6 @@ class Area extends Model
     }
     public function folder(): HasMany
     {
-        return $this->hasMany(Folder::class);
+        return $this->hasMany(Folder::class,'id_area');
     }
 }

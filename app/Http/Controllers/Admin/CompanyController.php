@@ -83,12 +83,13 @@ class CompanyController extends Controller
     {
         $company = Company::findOrFail($id);
 
-
         if ($company->directions()->exists()) {
             return redirect()->route('companies.index')
                 ->with('error', 'No puedes eliminar la empresa porque tiene direcciones asociadas.');
         }
+
         $company->delete();
         return redirect()->route('companies.index')->with('success', 'Empresa eliminada correctamente.');
     }
+
 }
