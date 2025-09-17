@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Blocks, BookOpen, Building, File, Folder, Home, Users } from 'lucide-react';
+import { Blocks, BookOpen, Building, File, Folder, GraduationCap, Home, PencilLineIcon, Users } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -14,25 +14,21 @@ const mainNavItems: NavItem[] = [
         icon: Home,
     },
     {
-        title: 'Empresas',
-        href: '/companies',
-        icon: Building,
+        title: 'Profesores',
+        href: '/profesores',
+        icon: PencilLineIcon,
     },
     {
-        title: 'Direcciones',
-        href: '/directions',
-        icon: Blocks,
+        title: 'Alumnos',
+        href: '/alumnos',
+        icon: GraduationCap,
     },
     {
-        title: 'Areas',
-        href: '/areas',
-        icon: Users,
+        title: 'Materias',
+        href: '/materias',
+        icon: BookOpen,
     },
-    {
-        title: 'Tipos de archivos',
-        href: '/types-documents',
-        icon: File,
-    },
+
 ];
 
 const footerNavItems: NavItem[] = [
